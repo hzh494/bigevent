@@ -68,7 +68,7 @@
         if (userName === '' || password === '') {
           $('#pResult').html('用户名和密码不能为空！');
           $('.modal').modal('show');
-          //   alert('心太大了');
+            // alert('心太大了');
         } else {
           user.login(userName, password, function(res) {
             console.log(res);
