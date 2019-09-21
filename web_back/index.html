@@ -141,27 +141,27 @@
     <script src="./js/utils/user.js"></script>
 
     <script>
-      $(function() {
-        user.getInfo(function(res) {
-          console.log(res);
-          if (res.code === 200) {
-            $('#userName').html(res.data.nickname);
-            $('#userImg').attr('src', res.data.user_pic);
+      // // 给按钮添加点击事件
+      // // 1.调用 退出功能
+      $('#btnLogout').click(function(){
+        
+          if(window.confirm('确定要退出吗?')){
+            user.logout(function(res){
+              if(res.code === 200){
+                window.location.href = './login.html';
+              }
           }
-        });
-      });
-      // 给按钮添加点击事件
-      // 1.调用 退出功能
-      $('#btnLogout').click(function() {
-        // todos:用模态框来代替
-        if (window.confirm('确定要退出吗？')) {
-          user.logout(function(res) {
-            if (res.code == 200) {
-              window.location.href = './login.html';
-            }
-          });
+        )}
+      })
+      user.getInfo(function(res){
+        console.log(res.data.nickname);
+        
+        if(res.code === 200){
+          $('#userName').html(res.data.nickname);
+          $('#userImg').attr('src',res.data.user_pic);
         }
-      });
+      })
+      
     </script>
   </body>
 </html>

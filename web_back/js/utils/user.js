@@ -8,7 +8,7 @@ var user = {
   login: function(userName, password, callBack) {
     // alert(userName + password);
     $.post('http://localhost:8000/admin/login', { user_name: userName, password: password }, function(res) {
-      debugger;
+      
       // res 是本次请求，从服务器回来的数据
       callBack(res);
     });

@@ -61,28 +61,26 @@
       // 2. ajax请求
       // 3. 根据结果给反馈
 
-      $('#btnLogin').click(function() {
+      $('#btnLogin').click(function(){
         var userName = $('#userName').val();
         var password = $('#password').val();
-        console.log(userName, password);
-        if (userName === '' || password === '') {
-          $('#pResult').html('用户名和密码不能为空！');
+        if(userName == '' | password==''){
+          
           $('.modal').modal('show');
-            // alert('心太大了');
-        } else {
-          user.login(userName, password, function(res) {
-            console.log(res);
-            if (res.code === 200) {
-              //   alert('ok');
-              window.location.href = './index.html';
-            } else {
-              //   alert(res.msg);
-              $('#pResult').html(res.msg);
-              $('.modal').modal('show');
-            }
-          });
+          $('#pResult').html('用户名或密码不能为空')
+        }else{
+         user.login(userName,password,function(res){
+          console.log(res);
+          if(res.code === 400){
+            $('.modal').modal('show');
+          $('#pResult').html('用户名或密码错误')
+          }else if(res.code === 200){
+            window.location.href = './index.html';
+          }
+         })
         }
-      });
+      })
+      
     </script>
   </body>
 </html>
